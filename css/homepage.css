@@ -1,0 +1,63 @@
+body {
+  background-image: url(../CyberShop/IMG/bg_admin1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: "Times New Roman", Times, serif;
+}
+
+header {
+  background-color: #078d92;
+}
+header .header-right h1 {
+  font-size: 30px;
+}
+
+.banner a {
+  text-decoration: none;
+}
+.banner a .button-homepage {
+  font-size: 100px;
+  transition: all 0.3s;
+  color: white;
+  border-radius: 20%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.5) 20px 30px 30px -10px;
+}
+.banner a .button-homepage:hover {
+  background: rgba(0, 0, 0, 0.03);
+  box-shadow: rgba(0, 0, 0, 0.3) 10px 15px 15px -5px;
+  transform: translateY(25px);
+}
+.banner a .button-homepage:hover .content {
+  opacity: 1;
+  transform: translateY(50%);
+  box-shadow: rgba(0, 0, 0, 0.3) 10px 15px 15px -5px;
+}
+.banner a .button-homepage .content {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: #078d92;
+  color: #fff;
+  padding: 15px;
+  border-radius: 100px;
+  left: 50%;
+  transform: translateX(-50%, 50px);
+  letter-spacing: 1px;
+  font-size: 30px;
+  opacity: 0;
+  margin-top: 80px;
+  transition: 0.5s;
+}
+.banner a .button-homepage .content ::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: #078d92;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}/*# sourceMappingURL=homepage.css.map */

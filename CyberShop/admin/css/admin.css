@@ -1,0 +1,45 @@
+
+body {
+  background-image: url(../IMG/bg_admin1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%;
+}
+
+header {
+  background-color: #078d92;
+}
+header nav {
+  height: 100px;
+}
+header nav .header-right i {
+  color: #ffffff;
+  font-size: 35px;
+}
+header nav .header-right i:hover {
+  color: #414040;
+  transition: 0.5s;
+}
+
+.container h3 {
+  font-size: 20px;
+  color: #055b5e;
+}
+.container .phoneBanner {
+  background-color: rgba(255, 255, 255, 0.137254902);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.container .phoneBanner .text-right button {
+  background-color: #055b5e;
+  color: #ffffff;
+}
+.container .phoneBanner .text-right button:hover {
+  cursor: pointer;
+  background-color: #044749;
+  transition: 0.3s;
+}/*# sourceMappingURL=admin.css.map */
