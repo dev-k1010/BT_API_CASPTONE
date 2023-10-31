@@ -1,0 +1,23 @@
+body {
+  background-image: url(../IMG/bg_admin1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%;
+}
+
+header {
+  background-color: #078d92;
+}
+header nav {
+  height: 100px;
+}
+header nav .header-right i {
+  color: #ffffff;
+  font-size: 35px;
+}
+header nav .header-right i:hover {
+  color: #414040;
+  transition: 0.5s;
+}/*# sourceMappingURL=customer.css.map */
