@@ -2,7 +2,7 @@ let getData = (idValue) => document.getElementById(idValue).value;
 
 export let layThongTinForm = () => {
   let name = getData("name");
-  let price = getData("price").value * 1;
+  let price = getData("price");
   let screen = getData("screen");
   let blackCamera = getData("backCam");
   let frontCamera = getData("frontCam");
@@ -45,12 +45,13 @@ export function showData(phone) {
 }
 //  Search
 export function searchName(phoneList) {
-  let valueName = document.getElementById("search").value;
   let resultArr = [];
+  let valueName = document.getElementById("search").value;
   for (let i = 0; i < phoneList.length; i++) {
     if (phoneList[i].name == valueName) {
       resultArr.push(phoneList[i]);
       return resultArr;
+     
     }
   }
 }
@@ -74,7 +75,8 @@ export class Arrange {
         }
         return 0;
       });
-    } else {
+    }
+    if (type === -1) {
       this.buttonSwitch("sapXepGiam", "sapXepTang");
       return phoneList.sort((a, b) => {
         let x = a.price;

@@ -2,26 +2,26 @@ import { https } from "../services/service.js";
 import {
   Arrange,
   layThongTinForm,
-  renderPhoneList,
   searchName,
+  renderPhoneList,
   showData,
 } from "./controller-admin.js";
 import { Phone } from "../model/phone.js";
 import { Validate } from "./validate.js";
 import { Untils } from "./untils.js";
+
+let listPhone = [];
 let selectedId = null;
 const validate = new Validate();
 const untils = new Untils();
 const arrange = new Arrange();
-let listPhone = [];
-
 // Render
 let fectPhoneList = () => {
   https
     .get(`/product`)
     .then((res) => {
       listPhone = res.data;
-      renderPhoneList(listPhone);
+      renderPhoneList(listPhone.reverse());
     })
     .catch((err) => {
       console.log(err.data);
@@ -40,7 +40,6 @@ window.deletePhone = (id) => {
       console.log("🙂 ~ window.deletePhone ~ err:", err);
     });
 };
-
 // Add
 window.addPhone = () => {
   const inputs = untils.getInputValue();
@@ -92,21 +91,17 @@ window.updatePhone = () => {
     });
 };
 
-// Search
 window.searchPhone = () => {
-  console.log("first");
-
-  let dskq = searchName(listPhone);
-  renderPhoneList(dskq);
+  let resultSearch = searchName(listPhone);
+  renderPhoneList(resultSearch);
 };
 
-// Price Up
-window.up = () => {
+window.upPrice = () => {
   let resultArrange = arrange.arrangePrice(listPhone, 1);
   renderPhoneList(resultArrange);
 };
-// Price Down
-window.down = () => {
-  let resultArrange = arrange.arrangePrice(listPhone, 2);
+
+window.downPrice = () => {
+  let resultArrange = arrange.arrangePrice(listPhone, -1);
   renderPhoneList(resultArrange);
 };
