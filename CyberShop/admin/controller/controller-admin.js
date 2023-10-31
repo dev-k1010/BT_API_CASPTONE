@@ -2,7 +2,7 @@ let getData = (idValue) => document.getElementById(idValue).value;
 
 export let layThongTinForm = () => {
   let name = getData("name");
-  let price = getData("price");
+  let price = getData("price").value * 1;
   let screen = getData("screen");
   let blackCamera = getData("backCam");
   let frontCamera = getData("frontCam");
@@ -45,12 +45,48 @@ export function showData(phone) {
 }
 //  Search
 export function searchName(phoneList) {
-  let resultArr = [];
   let valueName = document.getElementById("search").value;
+  let resultArr = [];
   for (let i = 0; i < phoneList.length; i++) {
     if (phoneList[i].name == valueName) {
       resultArr.push(phoneList[i]);
+      return resultArr;
     }
   }
-  return resultArr;
+}
+// Sắp xếp
+export class Arrange {
+  buttonSwitch(idNone, idInline) {
+    document.getElementById(idNone).style.display = " none";
+    document.getElementById(idInline).style.display = " inline";
+  }
+  arrangePrice(phoneList, type) {
+    if (type === 1) {
+      this.buttonSwitch("sapXepTang", "sapXepGiam");
+      return phoneList.sort((a, b) => {
+        let x = a.price;
+        let y = b.price;
+        if (x < y) {
+          return -1;
+        }
+        if (x > y) {
+          return 1;
+        }
+        return 0;
+      });
+    } else {
+      this.buttonSwitch("sapXepGiam", "sapXepTang");
+      return phoneList.sort((a, b) => {
+        let x = a.price;
+        let y = b.price;
+        if (x > y) {
+          return -1;
+        }
+        if (x < y) {
+          return 1;
+        }
+        return 0;
+      });
+    }
+  }
 }

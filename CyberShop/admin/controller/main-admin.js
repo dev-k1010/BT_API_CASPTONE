@@ -1,5 +1,6 @@
 import { https } from "../services/service.js";
 import {
+  Arrange,
   layThongTinForm,
   renderPhoneList,
   searchName,
@@ -11,6 +12,7 @@ import { Untils } from "./untils.js";
 let selectedId = null;
 const validate = new Validate();
 const untils = new Untils();
+const arrange = new Arrange();
 let listPhone = [];
 
 // Render
@@ -19,7 +21,7 @@ let fectPhoneList = () => {
     .get(`/product`)
     .then((res) => {
       listPhone = res.data;
-      renderPhoneList(listPhone.reverse());
+      renderPhoneList(listPhone);
     })
     .catch((err) => {
       console.log(err.data);
@@ -89,8 +91,22 @@ window.updatePhone = () => {
       console.log("🙂 ~ window.deletePhone ~ err:", err);
     });
 };
+
 // Search
 window.searchPhone = () => {
-  listPhone = searchName(listPhone);
-  renderPhoneList(listPhone);
+  console.log("first");
+
+  let dskq = searchName(listPhone);
+  renderPhoneList(dskq);
+};
+
+// Price Up
+window.up = () => {
+  let resultArrange = arrange.arrangePrice(listPhone, 1);
+  renderPhoneList(resultArrange);
+};
+// Price Down
+window.down = () => {
+  let resultArrange = arrange.arrangePrice(listPhone, 2);
+  renderPhoneList(resultArrange);
 };
