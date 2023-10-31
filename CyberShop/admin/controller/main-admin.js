@@ -2,26 +2,30 @@ import { https } from "../services/service.js";
 import {
   layThongTinForm,
   renderPhoneList,
+  searchName,
   showData,
 } from "./controller-admin.js";
 import { Phone } from "../model/phone.js";
 import { Validate } from "./validate.js";
 import { Untils } from "./untils.js";
-
+let selectedId = null;
 const validate = new Validate();
 const untils = new Untils();
+let listPhone = [];
 
 // Render
 let fectPhoneList = () => {
   https
     .get(`/product`)
     .then((res) => {
-      renderPhoneList(res.data.reverse());
+      listPhone = res.data;
+      renderPhoneList(listPhone.reverse());
     })
     .catch((err) => {
       console.log(err.data);
     });
 };
+window.fectPhoneList = fectPhoneList;
 fectPhoneList();
 // delete
 window.deletePhone = (id) => {
@@ -37,11 +41,11 @@ window.deletePhone = (id) => {
 
 // Add
 window.addPhone = () => {
-  let data = layThongTinForm();
-  if (!validate.isValid(data, true)) return;
-
   const inputs = untils.getInputValue();
-  let phone = new Phone(" ", ...inputs);
+
+  let phone = new Phone("", ...inputs);
+  console.log("🙂 ~ phone:", phone);
+  if (!validate.isValid(listPhone)) return;
 
   https
     .post(`/product`, phone)
@@ -55,6 +59,7 @@ window.addPhone = () => {
 };
 // Edit
 window.editPhone = (id) => {
+  selectedId = id;
   https
     .get(`/product/${id}`)
     .then((res) => {
@@ -67,10 +72,16 @@ window.editPhone = (id) => {
 };
 // Update
 window.updatePhone = () => {
-  let data = layThongTinForm();
+  const inputs = untils.getInputValue();
+
+  let phone = new Phone("", ...inputs);
+  console.log("🙂 ~ phone:", phone);
+  if (!validate.isValid(listPhone)) return;
   https
-    .put(`/product/${data.id}`, data)
+    .put(`/product/${selectedId}`, phone)
     .then((res) => {
+      console.log("🙂 ~ .then ~ res:", res);
+
       $("#exampleModal").modal("hide");
       fectPhoneList();
     })
@@ -78,9 +89,8 @@ window.updatePhone = () => {
       console.log("🙂 ~ window.deletePhone ~ err:", err);
     });
 };
-/*
-Anh xem tại code của em sai ở đâu giúp em với ạ nó gặp hai vấn đề
-      1. Tại "addPhone" ở dòng 39 thì khi em kiểm tra trùng tên thì nó không in ra thông báo
-      2. khi em "Update" ở dòng 69 lại thì nó không update được và hiện Lỗi PUT-404 
-Chỗ nào sai anh comment chỉ em cách sữa với ạ!
-*/
+// Search
+window.searchPhone = () => {
+  listPhone = searchName(listPhone);
+  renderPhoneList(listPhone);
+};

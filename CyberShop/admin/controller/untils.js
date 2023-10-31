@@ -1,4 +1,5 @@
 let getEle = (id) => document.getElementById(id);
+let id=null
 export class Untils {
   // arr key
   inpArr = [

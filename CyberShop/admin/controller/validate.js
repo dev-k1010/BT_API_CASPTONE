@@ -16,7 +16,7 @@ export class Validate {
   // Rỗng
   isNotEmpty(id, idTB) {
     let text = getEle(id).value.trim();
-    return text == ""
+    return text == " "
       ? this.messageSwitch(false, idTB, `(*)This field can't be empty`)
       : this.messageSwitch(true, idTB);
   }
@@ -38,20 +38,23 @@ export class Validate {
   isNotExist(phoneList, isUpdate = false) {
     if (isUpdate) return this.messageSwitch(true, "tbname");
     for (let i = 0; i < phoneList.length; i++) {
-      if (phoneList[i] === getEle("name").value) {
+      if (phoneList[i].name == getEle("name").value) {
         return this.messageSwitch(
           false,
           "tbname",
           "(*)This phone already exist"
         );
       }
+      console.log("🙂 ~ Validate ~ isNotExist ~ getEle:", getEle);
     }
     return this.messageSwitch(true, "tbname");
   }
   // kiểm tra
   isValid(phoneList, isUpdate) {
+    console.log("🙂 ~ Validate ~ isValid ~ isValid:", phoneList);
+
     let valid = true;
-    valid &=
+    valid =
       this.isNotEmpty("name", "tbname") && this.isNotExist(phoneList, isUpdate);
     valid &=
       this.isNotEmpty("price", "tbprice") &&

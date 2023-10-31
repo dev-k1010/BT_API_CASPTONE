@@ -24,11 +24,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <!-- Boostrap  -->
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.min.js"
-    /> -->
+
     <!-- Font-awesome -->
     <link
       rel="stylesheet"
@@ -87,13 +83,14 @@
             <div class="container-search mr-3">
               <form class="form-inline my-2 my-lg-0">
                 <input
-                  id="searchName"
+                  id="search"
                   class="form-control mr-sm-2"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
                 />
                 <button
+                  onclick="searchPhone()"
                   class="btn btn-outline-success my-2 my-sm-0"
                   type="submit"
                 >
@@ -119,7 +116,7 @@
           <table class="table display" id="myTable">
             <thead>
               <tr>
-                <th>#</th>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Price</th>
                 <th>Photo</th>
@@ -154,7 +151,6 @@
               </div>
               <div class="modal-body">
                 <form role="form" id="formPhone">
-                 
                   <div class="form-group">
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -189,7 +185,6 @@
                     </div>
                     <span class="sp-thongbao" id="tbprice">‍</span>
                   </div>
-
                   <div class="form-group">
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -208,7 +203,6 @@
 
                     <span class="sp-thongbao" id="tbscreen">‍</span>
                   </div>
-
                   <div class="form-group">
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -281,7 +275,6 @@
 
                     <span class="sp-thongbao" id="tbdesc">‍</span>
                   </div>
-
                   <div class="form-group">
                     <div class="input-group">
                       <div class="input-group-prepend">

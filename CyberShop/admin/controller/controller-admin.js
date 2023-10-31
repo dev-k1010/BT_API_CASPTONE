@@ -43,4 +43,14 @@ export function showData(phone) {
   document.getElementById("desc").value = desc;
   document.getElementById("img").value = img;
 }
-// Validate
+//  Search
+export function searchName(phoneList) {
+  let resultArr = [];
+  let valueName = document.getElementById("search").value;
+  for (let i = 0; i < phoneList.length; i++) {
+    if (phoneList[i].name == valueName) {
+      resultArr.push(phoneList[i]);
+    }
+  }
+  return resultArr;
+}
