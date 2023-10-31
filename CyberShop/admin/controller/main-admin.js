@@ -92,10 +92,9 @@ window.updatePhone = () => {
 };
 
 window.searchPhone = () => {
-  let resultSearch = searchName(listPhone);
-  renderPhoneList(resultSearch);
+  renderPhoneList(searchName(listPhone));
 };
-
+fectPhoneList()
 window.upPrice = () => {
   let resultArrange = arrange.arrangePrice(listPhone, 1);
   renderPhoneList(resultArrange);

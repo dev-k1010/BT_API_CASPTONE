@@ -50,10 +50,12 @@ export function searchName(phoneList) {
   for (let i = 0; i < phoneList.length; i++) {
     if (phoneList[i].name == valueName) {
       resultArr.push(phoneList[i]);
-      return resultArr;
-     
+    }
+    if (valueName == "") {
+      resultArr = phoneList;
     }
   }
+  return resultArr;
 }
 // Sắp xếp
 export class Arrange {
